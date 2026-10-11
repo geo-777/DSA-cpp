@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 
 #define MAX 100
@@ -58,7 +57,7 @@ int main() {
 
             if (isValid(x, y, n, m) &&
                 maze[x][y] == 0 &&
-                dist[x][y] > dist[cur.x][cur.y] + 1) {
+                dist[x][y] == INF) {
 
                 dist[x][y] = dist[cur.x][cur.y] + 1;
                 enqueue(x, y);
@@ -68,7 +67,7 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            if (maze[i][j] == 999)
+            if (maze[i][j] == -1)
                 printf("# ");
             else if (dist[i][j] == INF)
                 printf("INF ");
@@ -80,4 +79,3 @@ int main() {
 
     return 0;
 }
-

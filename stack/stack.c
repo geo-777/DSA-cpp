@@ -1,31 +1,27 @@
 #include <stdio.h>
 
-#define MAX 10
+#define MAX 100
 
-int stack[MAX];
-int top = -1;
+int top=-1, stack[MAX];
 
-// Check if stack is full
 int isFull() {
-    return top == MAX - 1;
+    return top + 1 == MAX;
 }
-
-// Check if stack is empty
 int isEmpty() {
-    return top == -1;
+    return top==-1;
 }
 
-// Insert an element
-void push(int x) {
+void push(int val) {
     if (isFull()) {
         printf("Stack Overflow\n");
         return;
     }
 
-    stack[++top] = x;
+    stack[++top] = val;
 }
 
-// Remove and return top element
+
+
 int pop() {
     if (isEmpty()) {
         printf("Stack Underflow\n");
@@ -35,47 +31,7 @@ int pop() {
     return stack[top--];
 }
 
-// Return top element without removing it
-int peek() {
-    if (isEmpty()) {
-        printf("Stack is Empty\n");
-        return -1;
-    }
-
-    return stack[top];
-}
-
-// Display stack
-void display() {
-    if (isEmpty()) {
-        printf("Stack is Empty\n");
-        return;
-    }
-
-    printf("Stack: ");
-
-    for (int i = top; i >= 0; i--) {
-        printf("%d ", stack[i]);
-    }
-
-    printf("\n");
-}
-
 int main() {
-
-    push(10);
-    push(20);
-    push(30);
-
-    display();
-
-    printf("Top element: %d\n", peek());
-
-    printf("Popped: %d\n", pop());
-
-    display();
-
-    printf("Top element: %d\n", peek());
 
     return 0;
 }
